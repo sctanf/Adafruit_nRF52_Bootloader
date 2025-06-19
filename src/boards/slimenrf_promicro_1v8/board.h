@@ -22,12 +22,12 @@
  * THE SOFTWARE.
  */
 
-#ifndef _SLIMENRF_TRK_PROMICRO_H
-#define _SLIMENRF_TRK_PROMICRO_H
+#ifndef _SLIMENRF_TRK_PROMICRO_1V8_H
+#define _SLIMENRF_TRK_PROMICRO_1V8_H
 
 #define _PINNUM(port, pin)    ((port)*32 + (pin))
 
-#define UICR_REGOUT0_VALUE UICR_REGOUT0_VOUT_2V1
+#define UICR_REGOUT0_VALUE UICR_REGOUT0_VOUT_1V8
 
 /*------------------------------------------------------------------*/
 /* LED
@@ -63,4 +63,4 @@
 #define UF2_BOARD_ID      "nRF52840-SlimeNRFTracker-ProMicro"
 #define UF2_INDEX_URL     "https://github.com/SlimeVR"
 
-#endif // _SLIMENRF_TRK_PROMICRO_H
+#endif // _SLIMENRF_TRK_PROMICRO_1V8_H
