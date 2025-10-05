@@ -42,8 +42,12 @@ void neopixel_teardown(void);
 
 #define PIN_SPKR_A (0 + 15)
 #define PIN_SPKR_B (0 + 26)
+#define PIN_SPKR_C (0 + 7)
+#define PIN_SPKR_D (0 + 5)
 #define PIN_HAPTIC_A (0 + 8)
 #define PIN_HAPTIC_B (0 + 6)
+#define PIN_HAPTIC_C (0 + 12)
+#define PIN_HAPTIC_D (0 + 4)
 
 //--------------------------------------------------------------------+
 // IMPLEMENTATION
@@ -84,10 +88,18 @@ void board_init(void) {
   nrf_gpio_pin_clear(PIN_SPKR_A);
   nrf_gpio_cfg(PIN_SPKR_B, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_SPKR_B);
+  nrf_gpio_cfg(PIN_SPKR_C, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_SPKR_C);
+  nrf_gpio_cfg(PIN_SPKR_D, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_SPKR_D);
   nrf_gpio_cfg(PIN_HAPTIC_A, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_HAPTIC_A);
   nrf_gpio_cfg(PIN_HAPTIC_B, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_HAPTIC_B);
+  nrf_gpio_cfg(PIN_HAPTIC_C, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_HAPTIC_C);
+  nrf_gpio_cfg(PIN_HAPTIC_D, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_HAPTIC_D);
 
   button_init(BUTTON_DFU);
   button_init(BUTTON_FRESET);
@@ -183,7 +195,7 @@ void board_teardown(void) {
   // make sure all pins are back in reset state
   // NUMBER_OF_PINS is defined in nrf_gpio.h
   for (int i = 0; i < NUMBER_OF_PINS; ++i) {
-    if (i != PIN_SPKR_A && i != PIN_SPKR_B && i != PIN_HAPTIC_A && i != PIN_HAPTIC_B)
+    if (i != PIN_SPKR_A && i != PIN_SPKR_B && i != PIN_SPKR_C && i != PIN_SPKR_D && i != PIN_HAPTIC_A && i != PIN_HAPTIC_B && i != PIN_HAPTIC_C && i != PIN_HAPTIC_D)
       nrf_gpio_cfg_default(i);
   }
 
@@ -192,10 +204,18 @@ void board_teardown(void) {
   nrf_gpio_pin_clear(PIN_SPKR_A);
   nrf_gpio_cfg(PIN_SPKR_B, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_SPKR_B);
+  nrf_gpio_cfg(PIN_SPKR_C, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_SPKR_C);
+  nrf_gpio_cfg(PIN_SPKR_D, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_SPKR_D);
   nrf_gpio_cfg(PIN_HAPTIC_A, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_HAPTIC_A);
   nrf_gpio_cfg(PIN_HAPTIC_B, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
   nrf_gpio_pin_clear(PIN_HAPTIC_B);
+  nrf_gpio_cfg(PIN_HAPTIC_C, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_HAPTIC_C);
+  nrf_gpio_cfg(PIN_HAPTIC_D, NRF_GPIO_PIN_DIR_OUTPUT, NRF_GPIO_PIN_INPUT_DISCONNECT, NRF_GPIO_PIN_NOPULL, NRF_GPIO_PIN_H0H1, NRF_GPIO_PIN_NOSENSE);
+  nrf_gpio_pin_set(PIN_HAPTIC_D);
 
   // board specific teardown actions
   board_teardown2();
